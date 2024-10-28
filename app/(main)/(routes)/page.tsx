@@ -1,3 +1,10 @@
+import { UserButton } from "@clerk/nextjs";
+
 export default function Home() {
-  return <p>hello discord clone!</p>;
+  return (
+    <div>
+      <UserButton />
+      <p>hello discord clone!</p>
+    </div>
+  );
 }
