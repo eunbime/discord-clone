@@ -74,3 +74,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.debug-sidebar {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.1);
+}

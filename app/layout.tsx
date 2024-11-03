@@ -1,9 +1,12 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/providers/theme-provider";
+
 import { cn } from "@/lib/utils";
+
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={cn(font.className, "bg-white dark:bg-[#313338]")}>
           <ThemeProvider
             attribute="class"
@@ -29,6 +32,8 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          {/* TODO: ModalProvider 적용 시 사이드바 사라지는 문제 해결 */}
+          <ModalProvider />
         </body>
       </html>
     </ClerkProvider>
