@@ -33,7 +33,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
           {/* TODO: ModalProvider 적용 시 사이드바 사라지는 문제 해결 */}
-          <ModalProvider />
+          {/* <ModalProvider /> */}
         </body>
       </html>
     </ClerkProvider>
