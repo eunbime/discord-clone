@@ -30,10 +30,10 @@ export default function RootLayout({
             enableSystem
             storageKey="discord-theme"
           >
+            {/* TODO: ModalProvider 적용 시 사이드바 사라지는 문제 해결 */}
+            {/* <ModalProvider /> */}
             {children}
           </ThemeProvider>
-          {/* TODO: ModalProvider 적용 시 사이드바 사라지는 문제 해결 */}
-          {/* <ModalProvider /> */}
         </body>
       </html>
     </ClerkProvider>
