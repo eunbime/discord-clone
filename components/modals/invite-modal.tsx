@@ -97,7 +97,6 @@ export const InviteModal = () => {
           </Button>
         </div>
       </DialogContent>
-      n
     </Dialog>
   );
 };
