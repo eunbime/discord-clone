@@ -101,11 +101,19 @@ export const EditServerModal = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <FileUpload
+                        <Input
+                          disabled={isLoading}
+                          className="bg-zinc-300/50 border-0 
+                        focus-visible:ring-0 text-black
+                        focus-visible:ring-offset-0"
+                          placeholder="Enter server name"
+                          {...field}
+                        />
+                        {/* <FileUpload
                           endpoint="serverImage"
                           value={field.value}
                           onChange={field.onChange}
-                        />
+                        /> */}
                       </FormControl>
                     </FormItem>
                   )}
