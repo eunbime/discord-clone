@@ -90,7 +90,7 @@ export const CreateChannelModal = () => {
       router.refresh();
       onClose();
     } catch (error) {
-      console.log(error);
+      console.log("CHANNEL_POST_ERROR", error);
     }
   };
 
