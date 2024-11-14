@@ -40,7 +40,7 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
 
       await axios.post(url, values);
     } catch (error) {
-      console.log(error);
+      console.log("Chat Input Error", error);
     }
   };
 
