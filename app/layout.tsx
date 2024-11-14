@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -30,9 +31,10 @@ export default function RootLayout({
             enableSystem
             storageKey="discord-theme"
           >
-            {/* TODO: ModalProvider 적용 시 사이드바 사라지는 문제 해결 */}
-            <ModalProvider />
-            {children}
+            <SocketProvider>
+              <ModalProvider />
+              {children}
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>
