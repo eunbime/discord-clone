@@ -66,7 +66,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
 
   return (
     <>
-      <button
+      <div
         onClick={() => setOpen(true)}
         className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full
     hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition"
@@ -86,7 +86,7 @@ export const ServerSearch = ({ data }: ServerSearchProps) => {
         >
           <span className="text-xs">⌘</span>K
         </kbd>
-      </button>
+      </div>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Search all channels and members" />
         <CommandList>
