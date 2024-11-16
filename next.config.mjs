@@ -1,5 +1,12 @@
+// import { webpack } from "next/dist/compiled/webpack/webpack";
+
 const nextConfig = {
-  /* config options here */
+  // webpack: (config) => {
+  //   config.externals.push({
+  //     "utf-8-validate": "commonjs: utf-8-validate",
+  //     bufferutil: "commonjs bufferutil",
+  //   });
+  // },
   images: {
     domains: ["utfs.io"],
   },
