@@ -43,6 +43,7 @@ export const InitialModal = () => {
 
   useEffect(() => {
     setIsMounted(true);
+    console.log("mounted!");
   }, []);
 
   const form = useForm({
@@ -68,7 +69,7 @@ export const InitialModal = () => {
   };
 
   if (!isMounted) {
-    return null;
+    return <></>;
   }
 
   return (

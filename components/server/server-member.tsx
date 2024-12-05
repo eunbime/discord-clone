@@ -6,7 +6,6 @@ import { useParams, useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
-import { channel } from "diagnostics_channel";
 
 interface ServerMemberProps {
   member: Member & { profile: Profile };
@@ -21,7 +20,7 @@ const roleIconMap = {
   [MemberRole.ADMIN]: <ShieldAlert className="h-4 w-4 ml-2 text-rose-500" />,
 };
 
-export const ServerMember = ({ member, server }: ServerMemberProps) => {
+export const ServerMember = ({ member }: ServerMemberProps) => {
   const params = useParams();
   const router = useRouter();
 

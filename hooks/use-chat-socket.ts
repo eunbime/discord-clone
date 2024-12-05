@@ -31,11 +31,11 @@ export const useChatSocket = ({
 
     socket.on(updateKey, (message: MessageWithMemberWithProfile) => {
       queryClient.setQueryData([queryKey], (oldData: any) => {
-        if (!oldData || !oldData.pages || !oldData.pages.length === 0) {
+        if (!oldData || !oldData.pages || !(oldData.pages.length === 0)) {
           return oldData;
         }
 
-        const newData = oldData.pages.map((page) => {
+        const newData = oldData.pages.map((page: any) => {
           return {
             ...page,
             items: page.items.map((item: MessageWithMemberWithProfile) => {
@@ -56,7 +56,7 @@ export const useChatSocket = ({
 
     socket.on(addKey, (message: MessageWithMemberWithProfile) => {
       queryClient.setQueryData([queryKey], (oldData: any) => {
-        if (!oldData || !oldData.pages || !oldData.pages.length === 0) {
+        if (!oldData || !oldData.pages || !(oldData.pages.length === 0)) {
           return {
             pages: [
               {

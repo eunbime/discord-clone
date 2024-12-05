@@ -29,7 +29,7 @@ export const DeleteMessageModal = () => {
       setIsLoading(true);
 
       const url = qs.stringifyUrl({
-        url: apiUrl || "",
+        url: apiUrl as string,
         query,
       });
 

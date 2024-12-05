@@ -19,6 +19,7 @@ export const ModalProvider = () => {
 
   useEffect(() => {
     setIsMounted(true);
+    console.log("modal provider mounted");
   }, []);
 
   if (!isMounted) {
