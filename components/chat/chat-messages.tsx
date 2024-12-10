@@ -49,8 +49,14 @@ export const ChatMessages = ({
   const chatRef = useRef<ElementRef<"div">>(null);
   const bottomRef = useRef<ElementRef<"div">>(null);
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useChatQuery({ queryKey, apiUrl, paramKey, paramValue });
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    status,
+    isLoading,
+  } = useChatQuery({ queryKey, apiUrl, paramKey, paramValue });
 
   useChatScroll({
     chatRef,
@@ -62,7 +68,7 @@ export const ChatMessages = ({
 
   useChatSocket({ queryKey, addKey, updateKey });
 
-  if ((status as string) === "loading") {
+  if (status === "pending") {
     return (
       <div className="flex flex-col flex-1 justify-center items-center ">
         <Loader2 className="h-7 w-7 text-zinc-500 animate-spin my-4 " />
@@ -84,6 +90,10 @@ export const ChatMessages = ({
     );
   }
 
+  if (isLoading) {
+    return <Loader2 className="h-6 w-6 text-zinc-500 animate-spin my-4" />;
+  }
+
   return (
     <div ref={chatRef} className="flex-1 flex-col flex overflow-y-auto">
       {!hasNextPage && <div className="flex-1" />}
@@ -103,25 +113,26 @@ export const ChatMessages = ({
         </div>
       )}
       <div className="flex flex-col-reverse mt-auto">
-        {data?.pages?.map((group, i) => (
-          <Fragment key={i}>
-            {group.items.map((message: MessageWithMemberWithProfile) => (
-              <ChatItem
-                key={message.id}
-                id={message.id}
-                currentMember={member}
-                member={message.member}
-                content={message.content}
-                fileUrl={message.fileUrl}
-                deleted={message.deleted}
-                timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
-                isUpdated={message.updatedAt !== message.createdAt}
-                socketQuery={socketQuery}
-                socketUrl={socketUrl}
-              />
-            ))}
-          </Fragment>
-        ))}
+        {data?.pages?.length !== 0 &&
+          data?.pages?.map((group, i) => (
+            <Fragment key={i}>
+              {group.items.map((message: MessageWithMemberWithProfile) => (
+                <ChatItem
+                  key={message.id}
+                  id={message.id}
+                  currentMember={member}
+                  member={message.member}
+                  content={message.content}
+                  fileUrl={message.fileUrl}
+                  deleted={message.deleted}
+                  timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
+                  isUpdated={message.updatedAt !== message.createdAt}
+                  socketQuery={socketQuery}
+                  socketUrl={socketUrl}
+                />
+              ))}
+            </Fragment>
+          ))}
       </div>
       <div ref={bottomRef} />
     </div>

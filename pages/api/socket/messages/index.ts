@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIo
 ) {
+  // 요청 검증
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }

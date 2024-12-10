@@ -20,12 +20,15 @@ export const initialProfile = async () => {
     return profile;
   }
 
+  if (user.emailAddresses.length === 0)
+    return console.log("User emailAddresses is not an array");
+
   const newProfile = await db.profile.create({
     data: {
       userId: user.id,
       name: `${user.firstName} ${user.lastName}`,
       imageUrl: user.imageUrl,
-      email: user.emailAddresses[0].emailAddress,
+      email: user.emailAddresses?.[0].emailAddress,
     },
   });
 

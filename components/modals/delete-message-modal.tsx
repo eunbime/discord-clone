@@ -15,9 +15,11 @@ import {
 import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "@/components/ui/button";
 import { DialogDescription } from "@radix-ui/react-dialog";
+import { useRouter } from "next/navigation";
 
 export const DeleteMessageModal = () => {
   const { isOpen, onClose, type, data } = useModal();
+  const router = useRouter();
 
   const isModalOpen = isOpen && type === "deleteMessage";
   const { apiUrl, query } = data;
@@ -36,6 +38,7 @@ export const DeleteMessageModal = () => {
       await axios.delete(url);
 
       onClose();
+      router.refresh();
     } catch (error) {
       console.log(error);
     } finally {
