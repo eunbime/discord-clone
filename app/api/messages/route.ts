@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 동적 렌더링
+
 import { NextResponse } from "next/server";
 
 import { currentProfile } from "@/lib/current-profile";
